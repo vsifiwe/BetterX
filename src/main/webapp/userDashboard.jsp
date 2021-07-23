@@ -14,7 +14,7 @@
         <meta name="description" content="">
         <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
         <meta name="generator" content="Hugo 0.84.0">
-        <title>BetterX - Pharmacie Du Phare LTD </title>
+        <title>Dashboard - BetterX </title>
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
               integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -154,7 +154,7 @@
                     <div class="container my-4">
                         <div class="row">
                             <div class="col">
-                                <div class="card border-success rounded-3">
+                                <div class="card border-success border-3">
                                     <div class="card-body">
                                         <p class="text-secondary">Today's Sales</p>
                                         <h3><strong>63</strong></h3>
@@ -162,7 +162,7 @@
                                 </div>
                             </div>
                             <div class="col">
-                                <div class="card border-primary">
+                                <div class="card border-primary border-3">
                                     <div class="card-body">
                                         <p class="text-secondary">Amount Sold</p>
                                         <h3><strong>326,000 RWF</strong></h3>
@@ -170,7 +170,7 @@
                                 </div>
                             </div>
                             <div class="col">
-                                <div class="card border-secondary">
+                                <div class="card border-secondary border-3">
                                     <div class="card-body">
                                         <p class="text-secondary">Weekly Total</p>
                                         <h3><strong>1,327,240 RWF</strong></h3>
