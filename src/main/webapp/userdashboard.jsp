@@ -39,7 +39,16 @@
         <!-- Custom styles for this template -->
         <link href="./resources/dashboard.css" rel="stylesheet">
     </head>
-
+    <%
+        // Check if User is logged in and prevent back button from showing secure page
+        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1
+        response.setHeader("Pragma", "no-cache"); // HTTP 1.0
+        response.setHeader("Expires", "0"); // Proxy servers
+        
+        if(session.getAttribute("CURRENT_USER") == null){
+            response.sendRedirect(request.getContextPath() + "/logout");
+        }
+    %>
     <body>
 
         <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -74,7 +83,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="products.jsp">
                                     <span data-feather="package"></span>
                                     Products / Stock
                                 </a>
@@ -93,7 +102,7 @@
                             </li>
                         </ul>
 
-                        <button type="button" class="btn btn-primary btn-sm m-3 ">
+                        <button type="button" class="btn btn-primary btn-sm m-3">
                             <span data-feather="plus"></span>
                             New Sale
                         </button>
@@ -319,9 +328,6 @@
 
         <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
                 integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE"
-        crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
-                integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha"
         crossorigin="anonymous"></script>
         <script src="./resources/dashboard.js"></script>
     </body>

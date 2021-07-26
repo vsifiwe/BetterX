@@ -39,7 +39,16 @@
         <!-- Custom styles for this template -->
         <link href="./resources/dashboard.css" rel="stylesheet">
     </head>
+    <%
+        // Check if User is logged in and prevent back button from showing secure page
+        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1
+        response.setHeader("Pragma", "no-cache"); // HTTP 1.0
+        response.setHeader("Expires", "0"); // Proxy servers
 
+        if (session.getAttribute("CURRENT_USER") == null) {
+            response.sendRedirect(request.getContextPath() + "/logout");
+        }
+    %>
     <body>
 
         <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -92,44 +101,44 @@
                                 </a>
                             </li>
                         </ul>
-                        
-                        <button type="button" class="btn btn-primary btn-sm m-3 ">
-                                    <span data-feather="plus"></span>
-                                                New Sale
-                                </button>
 
-<!--                        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                            <span>Saved reports</span>
-                            <a class="link-secondary" href="#" aria-label="Add a new report">
-                                <span data-feather="plus-circle"></span>
-                            </a>
-                        </h6>
-                        <ul class="nav flex-column mb-2">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <span data-feather="file-text"></span>
-                                    Current month
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <span data-feather="file-text"></span>
-                                    Last quarter
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <span data-feather="file-text"></span>
-                                    Social engagement
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <span data-feather="file-text"></span>
-                                    Year-end sale
-                                </a>
-                            </li>
-                        </ul>-->
+                        <button type="button" class="btn btn-primary btn-sm m-3 ">
+                            <span data-feather="plus"></span>
+                            New Sale
+                        </button>
+
+                        <!--                        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                                                    <span>Saved reports</span>
+                                                    <a class="link-secondary" href="#" aria-label="Add a new report">
+                                                        <span data-feather="plus-circle"></span>
+                                                    </a>
+                                                </h6>
+                                                <ul class="nav flex-column mb-2">
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" href="#">
+                                                            <span data-feather="file-text"></span>
+                                                            Current month
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" href="#">
+                                                            <span data-feather="file-text"></span>
+                                                            Last quarter
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" href="#">
+                                                            <span data-feather="file-text"></span>
+                                                            Social engagement
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" href="#">
+                                                            <span data-feather="file-text"></span>
+                                                            Year-end sale
+                                                        </a>
+                                                    </li>
+                                                </ul>-->
                     </div>
                 </nav>
 

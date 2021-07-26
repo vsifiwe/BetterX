@@ -9,7 +9,7 @@ package com.x.types;
  *
  * @author X
  */
-public enum Level {
+public enum AccessLevel {
     admin,
     superuser,
     user

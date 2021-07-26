@@ -11,6 +11,5 @@ package com.x.types;
  */
 public enum Measure {
     piece,
-    tube,
     ml
 }

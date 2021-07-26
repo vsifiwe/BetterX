@@ -39,7 +39,16 @@
         <!-- Custom styles for this template -->
         <link href="./resources/dashboard.css" rel="stylesheet">
     </head>
+    <%
+        // Check if User is logged in and prevent back button from showing secure page
+        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1
+        response.setHeader("Pragma", "no-cache"); // HTTP 1.0
+        response.setHeader("Expires", "0"); // Proxy servers
 
+        if (session.getAttribute("CURRENT_USER") == null) {
+            response.sendRedirect(request.getContextPath() + "/logout");
+        }
+    %>
     <body>
 
         <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -92,44 +101,12 @@
                                 </a>
                             </li>
                         </ul>
-                        
-                        <button type="button" class="btn btn-primary btn-sm m-3 ">
-                                    <span data-feather="plus"></span>
-                                                New Sale
-                                </button>
 
-<!--                        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                            <span>Saved reports</span>
-                            <a class="link-secondary" href="#" aria-label="Add a new report">
-                                <span data-feather="plus-circle"></span>
-                            </a>
-                        </h6>
-                        <ul class="nav flex-column mb-2">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <span data-feather="file-text"></span>
-                                    Current month
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <span data-feather="file-text"></span>
-                                    Last quarter
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <span data-feather="file-text"></span>
-                                    Social engagement
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <span data-feather="file-text"></span>
-                                    Year-end sale
-                                </a>
-                            </li>
-                        </ul>-->
+                        <button type="button" class="btn btn-primary btn-sm m-3 ">
+                            <span data-feather="plus"></span>
+                            New Sale
+                        </button>
+
                     </div>
                 </nav>
 
@@ -148,10 +125,23 @@
                             </button>
                         </div>
                     </div>
-
-                    <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
-
-                    <h2>Sales</h2>
+                    <div class="container my-4">
+                        <div class="row">
+                            <div class="col">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                                    <button class="btn btn-outline-secondary" type="button" id="button-addon1"><span data-feather="search"></span></button>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <!--<a class="btn btn-primary" href="#" role="button">Link</a>-->
+                            </div>
+                            <div class="col">
+                                <a class="btn btn-primary" href="newproduct.jsp" role="button"><span data-feather="plus"></span> New Product</a>
+                            </div>
+                        </div>
+                    </div>
+                    <h2>Products</h2>
                     <div class="table-responsive">
                         <table class="table table-striped table-sm">
                             <thead>
@@ -290,9 +280,6 @@
 
         <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
                 integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE"
-        crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
-                integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha"
         crossorigin="anonymous"></script>
         <script src="./resources/dashboard.js"></script>
     </body>

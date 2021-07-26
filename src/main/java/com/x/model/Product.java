@@ -6,7 +6,6 @@
 package com.x.model;
 
 import com.x.types.Measure;
-import com.x.types.Type;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,29 +24,29 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id")
     private int id;
-    @Column(name="pid")
-    private String productId;
     @Column(name="pname")
     private String productName;
     @Column(name="qty")
     private long quantity;
     @Column(name="measure")
     private Measure measure;
-    @Column(name="desc")
+    @Column(name="description")
     private String description;
-    @Column(name="type")
-    private Type type;
-
+    @Column(name="company")
+    private String manufacturingCompany;
+    @Column(name="country")
+    private String Country;
+    
     public Product() {
     }
 
-    public Product(String productId, String productName, long quantity, Measure measure, String description, Type type) {
-        this.productId = productId;
+    public Product(String productName, long quantity, Measure measure, String description, String manufacturingCompany, String Country) {
         this.productName = productName;
         this.quantity = quantity;
         this.measure = measure;
         this.description = description;
-        this.type = type;
+        this.manufacturingCompany = manufacturingCompany;
+        this.Country = Country;
     }
 
     public int getId() {
@@ -56,14 +55,6 @@ public class Product {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getProductId() {
-        return productId;
-    }
-
-    public void setProductId(String productId) {
-        this.productId = productId;
     }
 
     public String getProductName() {
@@ -98,12 +89,19 @@ public class Product {
         this.description = description;
     }
 
-    public Type getType() {
-        return type;
+    public String getManufacturingCompany() {
+        return manufacturingCompany;
     }
 
-    public void setType(Type type) {
-        this.type = type;
+    public void setManufacturingCompany(String manufacturingCompany) {
+        this.manufacturingCompany = manufacturingCompany;
     }
-    
+
+    public String getCountry() {
+        return Country;
+    }
+
+    public void setCountry(String Country) {
+        this.Country = Country;
+    }
 }
