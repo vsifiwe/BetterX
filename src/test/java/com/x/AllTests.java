@@ -46,7 +46,7 @@ public class AllTests {
         productDao.create(product5);
         
         List<Product> products = productDao.findAll();
-        assertEquals(products.size(), 4);
+        assertEquals(products.size(), 5);
     }
     
     public void testCreateSuppliers(){
