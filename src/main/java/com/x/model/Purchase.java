@@ -6,30 +6,34 @@
 package com.x.model;
 
 import com.x.dao.GenericDao;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 /**
  *
  * @author X
  */
 @Entity
-@Table(name="sales")
-public class Sale {
+public class Purchase {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private String customerName;
+    private Date creationDate;
+    private Supplier supplier;
     private List<PurchaseItem> products;
 
-    public Sale() {
+    public Purchase() {
     }
+
+    public Purchase(Date creationDate, Supplier supplier, List<PurchaseItem> products) {
+        this.creationDate = creationDate;
+        this.supplier = supplier;
+        this.products = products;
+    } 
 
     public int getId() {
         return id;
@@ -39,12 +43,20 @@ public class Sale {
         this.id = id;
     }
 
-    public String getCustomerName() {
-        return customerName;
+    public Date getCreationDate() {
+        return creationDate;
     }
 
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public Supplier getSupplier() {
+        return supplier;
+    }
+
+    public void setSupplier(Supplier supplier) {
+        this.supplier = supplier;
     }
 
     public List<PurchaseItem> getProducts() {
@@ -55,12 +67,17 @@ public class Sale {
         this.products = products;
     }
     
-    public void saveSale(){
+    public void savePurchase(){
+        
         GenericDao dao = new GenericDao(Product.class);
         for(PurchaseItem item : products){
             Product product = (Product) dao.findbyID(item.getProduct().getId());
-            product.reduceStock(item.getAmount());
+            product.increaseStock(item.getAmount());
             dao.update(product);
         }
+    }
+    
+    public void creditSupplier(){
+        
     }
 }

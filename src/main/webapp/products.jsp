@@ -102,10 +102,20 @@
                             </li>
                         </ul>
 
-                        <button type="button" class="btn btn-primary btn-sm m-3 ">
+                        <button type="button" class="btn btn-outline-primary btn-sm m-3 ">
                             <span data-feather="plus"></span>
-                            New Sale
+                            Purchase Order
                         </button>
+                        <div class="dropdown  mx-3 mb-3">
+                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                More options
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </div>
 
                     </div>
                 </nav>
@@ -147,10 +157,12 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Client Name</th>
-                                    <th scope="col">Items bought</th>
-                                    <th scope="col">Total Amount</th>
-                                    <th scope="col">Cash paid</th>
+                                    <th scope="col">Product Name</th>
+                                    <th scope="col">Selling qty</th>
+                                    <th scope="col">Measure</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Company</th>
+                                    <th scope="col">Country</th>
                                 </tr>
                             </thead>
                             <tbody>

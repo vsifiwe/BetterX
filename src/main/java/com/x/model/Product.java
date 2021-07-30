@@ -36,6 +36,7 @@ public class Product {
     private String manufacturingCompany;
     @Column(name="country")
     private String Country;
+    private long remainingStock;
     
     public Product() {
     }
@@ -103,5 +104,17 @@ public class Product {
 
     public void setCountry(String Country) {
         this.Country = Country;
+    }
+
+    public long getRemainingStock() {
+        return remainingStock;
+    }
+    
+    public void increaseStock(long stock){
+        this.remainingStock += stock; 
+    }
+    
+    public void reduceStock(long stock){
+        this.remainingStock -= stock;
     }
 }
