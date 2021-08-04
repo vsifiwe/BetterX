@@ -20,12 +20,17 @@ public class Supplier {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String supplierName;
+    private String phoneNumber;
     private long outstandingAmount;
 
-    public Supplier(String supplierName, long outstandingAmount) {
-        this.supplierName = supplierName;
-        this.outstandingAmount = outstandingAmount;
+    public Supplier() {
     }
+    
+    public Supplier(String supplierName, String phoneNumber) {
+        this.supplierName = supplierName;
+        this.phoneNumber = phoneNumber;
+    }
+
 
     public int getId() {
         return id;
@@ -49,6 +54,14 @@ public class Supplier {
 
     public void setOutstandingAmount(long outstandingAmount) {
         this.outstandingAmount = outstandingAmount;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
     
     

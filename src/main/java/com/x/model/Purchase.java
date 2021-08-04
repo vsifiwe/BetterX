@@ -25,14 +25,16 @@ public class Purchase {
     private Date creationDate;
     private Supplier supplier;
     private List<PurchaseItem> products;
+    private User createdBy;
 
     public Purchase() {
     }
 
-    public Purchase(Date creationDate, Supplier supplier, List<PurchaseItem> products) {
+    public Purchase(Date creationDate, Supplier supplier, List<PurchaseItem> products, User createdBy) {
         this.creationDate = creationDate;
         this.supplier = supplier;
         this.products = products;
+        this.createdBy = createdBy;
     } 
 
     public int getId() {
@@ -65,6 +67,14 @@ public class Purchase {
 
     public void setProducts(List<PurchaseItem> products) {
         this.products = products;
+    }
+
+    public User getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(User createdBy) {
+        this.createdBy = createdBy;
     }
     
     public void savePurchase(){
