@@ -5,9 +5,8 @@
  */
 package com.x.model;
 
+import java.util.Date;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
@@ -17,27 +16,27 @@ import javax.persistence.Id;
 @Entity
 public class Supplier {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private String supplierId;
     private String supplierName;
-    private String phoneNumber;
-    private long outstandingAmount;
+    private long outstanding;
+    private Date creationDate;
 
     public Supplier() {
     }
-    
-    public Supplier(String supplierName, String phoneNumber) {
+
+    public Supplier(String supplierId, String supplierName, long outstanding, Date creationDate) {
+        this.supplierId = supplierId;
         this.supplierName = supplierName;
-        this.phoneNumber = phoneNumber;
+        this.outstanding = outstanding;
+        this.creationDate = creationDate;
     }
 
-
-    public int getId() {
-        return id;
+    public String getSupplierId() {
+        return supplierId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setSupplierId(String supplierId) {
+        this.supplierId = supplierId;
     }
 
     public String getSupplierName() {
@@ -48,21 +47,19 @@ public class Supplier {
         this.supplierName = supplierName;
     }
 
-    public long getOutstandingAmount() {
-        return outstandingAmount;
+    public long getOutstanding() {
+        return outstanding;
     }
 
-    public void setOutstandingAmount(long outstandingAmount) {
-        this.outstandingAmount = outstandingAmount;
+    public void setOutstanding(long outstanding) {
+        this.outstanding = outstanding;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public Date getCreationDate() {
+        return creationDate;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-    
-    
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
+    } 
 }

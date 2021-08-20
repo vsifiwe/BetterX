@@ -6,56 +6,43 @@
 package com.x.model;
 
 import com.x.types.Measure;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 /**
  *
  * @author X
  */
 @Entity
-@Table(name="product")
 public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id")
-    private int id;
-    @Column(name="pname")
+    private String productId;
     private String productName;
-    @Column(name="qty")
-    private long quantity;
-    @Column(name="measure")
-    private Measure measure;
-    @Column(name="description")
-    private String description;
-    @Column(name="company")
     private String manufacturingCompany;
-    @Column(name="country")
-    private String Country;
-    private long remainingStock;
-    
+    private String description;
+    private String country;
+    private long quantity;
+    private Measure measure;
+
     public Product() {
     }
 
-    public Product(String productName, long quantity, Measure measure, String description, String manufacturingCompany, String Country) {
+    public Product(String productId, String productName, String manufacturingCompany, String description, String country, long quantity, Measure measure) {
+        this.productId = productId;
         this.productName = productName;
+        this.manufacturingCompany = manufacturingCompany;
+        this.description = description;
+        this.country = country;
         this.quantity = quantity;
         this.measure = measure;
-        this.description = description;
-        this.manufacturingCompany = manufacturingCompany;
-        this.Country = Country;
     }
 
-    public int getId() {
-        return id;
+    public String getProductId() {
+        return productId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setProductId(String productId) {
+        this.productId = productId;
     }
 
     public String getProductName() {
@@ -64,6 +51,30 @@ public class Product {
 
     public void setProductName(String productName) {
         this.productName = productName;
+    }
+
+    public String getManufacturingCompany() {
+        return manufacturingCompany;
+    }
+
+    public void setManufacturingCompany(String manufacturingCompany) {
+        this.manufacturingCompany = manufacturingCompany;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public long getQuantity() {
@@ -80,41 +91,5 @@ public class Product {
 
     public void setMeasure(Measure measure) {
         this.measure = measure;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getManufacturingCompany() {
-        return manufacturingCompany;
-    }
-
-    public void setManufacturingCompany(String manufacturingCompany) {
-        this.manufacturingCompany = manufacturingCompany;
-    }
-
-    public String getCountry() {
-        return Country;
-    }
-
-    public void setCountry(String Country) {
-        this.Country = Country;
-    }
-
-    public long getRemainingStock() {
-        return remainingStock;
-    }
-    
-    public void increaseStock(long stock){
-        this.remainingStock += stock; 
-    }
-    
-    public void reduceStock(long stock){
-        this.remainingStock -= stock;
     }
 }

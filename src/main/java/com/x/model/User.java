@@ -5,39 +5,40 @@
  */
 package com.x.model;
 
-import com.x.types.AccessLevel;
-import javax.persistence.Column;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 /**
  *
  * @author X
  */
 @Entity
-@Table(name = "users")
 public class User {
     @Id
     private String email;
-    @Column(name = "fname")
     private String firstName;
-    @Column(name = "lname")
     private String lastName;
-    @Column(name = "pwd")
     private String password;
-    @Column(name = "level")
-    private AccessLevel accessLevel;
+    private Date creationDate;
 
     public User() {
     }
 
-    public User(String firstName, String lastName, String email, String password, AccessLevel accessLevel) {
+    public User(String email, String firstName, String lastName, String password, Date creationDate) {
+        this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = email;
         this.password = password;
-        this.accessLevel = accessLevel;
+        this.creationDate = creationDate;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getFirstName() {
@@ -56,14 +57,6 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -72,13 +65,11 @@ public class User {
         this.password = password;
     }
 
-    public AccessLevel getAccessLevel() {
-        return accessLevel;
+    public Date getCreationDate() {
+        return creationDate;
     }
 
-    public void setAccessLevel(AccessLevel accessLevel) {
-        this.accessLevel = accessLevel;
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
     }
-    
-    
 }

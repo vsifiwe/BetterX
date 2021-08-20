@@ -8,7 +8,6 @@ package com.x;
 import com.x.dao.GenericDao;
 import com.x.model.Product;
 import com.x.model.Purchase;
-import com.x.model.PurchaseItem;
 import com.x.model.Sale;
 import com.x.model.Supplier;
 import com.x.model.User;
@@ -17,7 +16,6 @@ import com.x.types.Measure;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
-import java.util.Date;
 import java.util.List;
 import static org.testng.Assert.assertEquals;
 import org.testng.annotations.AfterClass;
@@ -27,7 +25,7 @@ import org.testng.annotations.Test;
  *
  * @author X
  */
-public class AllTests {
+public class BasicTests {
     GenericDao productDao = new GenericDao(Product.class);
     GenericDao userDao = new GenericDao(User.class);
     GenericDao supplierDao = new GenericDao(Supplier.class);
@@ -80,39 +78,7 @@ public class AllTests {
         
     }
     
-    public void testCreatePurchase(){
-        User user1 =(User) userDao.findbyID(1);
-        User user2 = (User) userDao.findbyID(2);
-        Supplier supplier1 = (Supplier) supplierDao.findbyID(3);
-        Supplier supplier2 = (Supplier) supplierDao.findbyID(4);
-        
-        List<PurchaseItem> products1 = null;
-        List<PurchaseItem> products2 = null;
-        List<PurchaseItem> products3 = null;
-        
-        Purchase purchase1 = new Purchase(new Date(), supplier1,  products1, user1);
-        Purchase purchase2 = new Purchase(new Date(), supplier2,  products2, user2);
-        Purchase purchase3 = new Purchase(new Date(), supplier2,  products3, user1);
-        
-        purchaseDao.create(purchase1);
-        purchaseDao.create(purchase2);
-        purchaseDao.create(purchase3);
-        purchase1.savePurchase();
-        purchase2.savePurchase();
-        purchase3.savePurchase();
-        
-        List<Purchase> purchases = purchaseDao.findAll();
-        
-        assertEquals(purchases.size(), 3);
-        
-        
-    }
-    
-    public void testCreateSale(){
-    
-    }
-    
-    @AfterClass
+//    @AfterClass
     public void afterEverything(){
     try {
             DriverManager.registerDriver(new com.mysql.jdbc.Driver());

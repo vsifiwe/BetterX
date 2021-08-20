@@ -13,6 +13,8 @@
     <mapping class="com.x.model.User"/>
     <mapping class="com.x.model.Product"/>
     <mapping class="com.x.model.Supplier"/>
+    <!--<mapping class="com.x.model.Purchase"/>-->
+    <!--<mapping class="com.x.model.PurchaseItem"/>-->
     <mapping class="com.x.types.AccessLevel"/>
     <mapping class="com.x.types.Measure"/>
   </session-factory>

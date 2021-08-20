@@ -5,62 +5,57 @@
  */
 package com.x.model;
 
-import com.x.dao.GenericDao;
 import java.util.List;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author X
  */
 @Entity
-@Table(name="sales")
 public class Sale {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-    private String customerName;
-    private List<PurchaseItem> products;
+    private String saleId;
+    @OneToMany
+    private List<SaleItem> soldItems;
+    private Client client;
 
     public Sale() {
     }
 
-    public int getId() {
-        return id;
+    public Sale(String saleId, List<SaleItem> soldItems, Client client) {
+        this.saleId = saleId;
+        this.soldItems = soldItems;
+        this.client = client;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public String getSaleId() {
+        return saleId;
     }
 
-    public String getCustomerName() {
-        return customerName;
+    public void setSaleId(String saleId) {
+        this.saleId = saleId;
     }
 
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
+    public List<SaleItem> getSoldItems() {
+        return soldItems;
     }
 
-    public List<PurchaseItem> getProducts() {
-        return products;
+    public void setSoldItems(List<SaleItem> soldItems) {
+        this.soldItems = soldItems;
     }
 
-    public void setProducts(List<PurchaseItem> products) {
-        this.products = products;
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
     
-    public void saveSale(){
-        GenericDao dao = new GenericDao(Product.class);
-        for(PurchaseItem item : products){
-            Product product = (Product) dao.findbyID(item.getProduct().getId());
-            product.reduceStock(item.getAmount());
-            dao.update(product);
-        }
+    public void getTotalSoldAmount(){
+    
     }
 }

@@ -5,19 +5,35 @@
  */
 package com.x.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  *
  * @author X
  */
+@Entity
 public class SaleItem {
-    
+    @Id
+    private String saleId;
     private Product product;
-    private long amount;
-    private long sellingPrice;
+    private long numberOfItems;
 
-    public SaleItem(Product product, long amount) {
+    public SaleItem() {
+    }
+
+    public SaleItem(String saleId, Product product, long numberOfItems) {
+        this.saleId = saleId;
         this.product = product;
-        this.amount = amount;
+        this.numberOfItems = numberOfItems;
+    }
+
+    public String getSaleId() {
+        return saleId;
+    }
+
+    public void setSaleId(String saleId) {
+        this.saleId = saleId;
     }
 
     public Product getProduct() {
@@ -28,12 +44,11 @@ public class SaleItem {
         this.product = product;
     }
 
-    public long getAmount() {
-        return amount;
+    public long getNumberOfItems() {
+        return numberOfItems;
     }
 
-    public void setAmount(long amount) {
-        this.amount = amount;
+    public void setNumberOfItems(long numberOfItems) {
+        this.numberOfItems = numberOfItems;
     }
-    
 }

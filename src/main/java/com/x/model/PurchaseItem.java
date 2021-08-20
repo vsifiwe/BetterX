@@ -5,18 +5,35 @@
  */
 package com.x.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  *
  * @author X
  */
+@Entity
 public class PurchaseItem {
+    @Id
+    private String purchaseItemId;
     private Product product;
-    private long amount;
-    private long purchasingPrice;
+    private long numberOfItems;
 
-    public PurchaseItem(Product product, long amount) {
+    public PurchaseItem() {
+    }
+
+    public PurchaseItem(String purchaseItemId, Product product, long numberOfItems) {
+        this.purchaseItemId = purchaseItemId;
         this.product = product;
-        this.amount = amount;
+        this.numberOfItems = numberOfItems;
+    }
+
+    public String getPurchaseItemId() {
+        return purchaseItemId;
+    }
+
+    public void setPurchaseItemId(String purchaseItemId) {
+        this.purchaseItemId = purchaseItemId;
     }
 
     public Product getProduct() {
@@ -27,12 +44,14 @@ public class PurchaseItem {
         this.product = product;
     }
 
-    public long getAmount() {
-        return amount;
+    public long getNumberOfItems() {
+        return numberOfItems;
     }
 
-    public void setAmount(long amount) {
-        this.amount = amount;
+    public void setNumberOfItems(long numberOfItems) {
+        this.numberOfItems = numberOfItems;
     }
+    
+    
     
 }
